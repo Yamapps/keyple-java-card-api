@@ -13,7 +13,7 @@ package org.eclipse.keyple.core.card;
 
 import java.util.List;
 import org.eclipse.keyple.core.util.Assert;
-import org.eclipse.keyple.core.util.json.KeypleGsonParser;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * This POJO contains a selection scenario composed of one or more card selection requests and
@@ -105,6 +105,6 @@ public final class CardSelectionScenario {
    */
   @Override
   public String toString() {
-    return "CARD_SELECTION_SCENARIO = " + KeypleGsonParser.getParser().toJson(this);
+    return "CARD_SELECTION_SCENARIO = " + JsonUtil.toJson(this);
   }
 }

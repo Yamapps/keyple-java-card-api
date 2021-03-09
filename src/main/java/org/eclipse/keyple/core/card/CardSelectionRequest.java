@@ -13,7 +13,7 @@ package org.eclipse.keyple.core.card;
 
 import org.eclipse.keyple.core.common.KeypleCardSelector;
 import org.eclipse.keyple.core.util.Assert;
-import org.eclipse.keyple.core.util.json.KeypleGsonParser;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * This POJO contains the data used to define a selection case.
@@ -90,6 +90,6 @@ public final class CardSelectionRequest {
    */
   @Override
   public String toString() {
-    return "CARD_SELECTION_REQUEST = " + KeypleGsonParser.getParser().toJson(this);
+    return "CARD_SELECTION_REQUEST = " + JsonUtil.toJson(this);
   }
 }

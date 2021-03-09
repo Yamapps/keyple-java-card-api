@@ -12,7 +12,7 @@
 package org.eclipse.keyple.core.card;
 
 import java.util.List;
-import org.eclipse.keyple.core.util.json.KeypleGsonParser;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * This POJO contains an ordered list of {@link ApduRequest} and the associated status code check
@@ -70,6 +70,6 @@ public final class CardRequest {
    */
   @Override
   public String toString() {
-    return "CARD_REQUEST = " + KeypleGsonParser.getParser().toJson(this);
+    return "CARD_REQUEST = " + JsonUtil.toJson(this);
   }
 }

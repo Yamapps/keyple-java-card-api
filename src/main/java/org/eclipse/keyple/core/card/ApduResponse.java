@@ -13,7 +13,7 @@ package org.eclipse.keyple.core.card;
 
 import java.util.Arrays;
 import org.eclipse.keyple.core.util.Assert;
-import org.eclipse.keyple.core.util.json.KeypleGsonParser;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * This POJO contains a set of data related to an ISO-7816 APDU response.
@@ -78,6 +78,6 @@ public final class ApduResponse {
    */
   @Override
   public String toString() {
-    return "APDU_RESPONSE = " + KeypleGsonParser.getParser().toJson(this);
+    return "APDU_RESPONSE = " + JsonUtil.toJson(this);
   }
 }

@@ -13,7 +13,7 @@ package org.eclipse.keyple.core.card;
 
 import org.eclipse.keyple.core.common.KeypleCardSelectionResponse;
 import org.eclipse.keyple.core.util.Assert;
-import org.eclipse.keyple.core.util.json.KeypleGsonParser;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * This POJO contains the data from a card obtained in response to a card selection request.
@@ -75,6 +75,6 @@ public final class CardSelectionResponse implements KeypleCardSelectionResponse 
    */
   @Override
   public String toString() {
-    return "CARD_SELECTION_RESPONSE = " + KeypleGsonParser.getParser().toJson(this);
+    return "CARD_SELECTION_RESPONSE = " + JsonUtil.toJson(this);
   }
 }

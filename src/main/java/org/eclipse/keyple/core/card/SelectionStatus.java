@@ -11,7 +11,7 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.card;
 
-import org.eclipse.keyple.core.util.json.KeypleGsonParser;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * This POJO contains the card selection status.
@@ -83,6 +83,6 @@ public class SelectionStatus {
    */
   @Override
   public String toString() {
-    return "SELECTION_STATUS = " + KeypleGsonParser.getParser().toJson(this);
+    return "SELECTION_STATUS = " + JsonUtil.toJson(this);
   }
 }

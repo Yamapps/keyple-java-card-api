@@ -13,7 +13,7 @@ package org.eclipse.keyple.core.card;
 
 import java.util.List;
 import org.eclipse.keyple.core.util.Assert;
-import org.eclipse.keyple.core.util.json.KeypleGsonParser;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * This POJO contains an ordered list of the responses received following a card request and
@@ -88,6 +88,6 @@ public final class CardResponse {
    */
   @Override
   public String toString() {
-    return "CARD_RESPONSE = " + KeypleGsonParser.getParser().toJson(this);
+    return "CARD_RESPONSE = " + JsonUtil.toJson(this);
   }
 }
