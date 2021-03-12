@@ -11,6 +11,7 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.card;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.json.JsonUtil;
@@ -20,7 +21,7 @@ import org.eclipse.keyple.core.util.json.JsonUtil;
  *
  * @since 2.0
  */
-public final class ApduResponse {
+public final class ApduResponse implements Serializable {
 
   private final byte[] bytes;
   private final int statusCode;

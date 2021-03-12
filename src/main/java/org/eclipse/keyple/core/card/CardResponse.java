@@ -11,6 +11,7 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.card;
 
+import java.io.Serializable;
 import java.util.List;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.json.JsonUtil;
@@ -22,7 +23,7 @@ import org.eclipse.keyple.core.util.json.JsonUtil;
  * @see CardRequest
  * @since 2.0
  */
-public final class CardResponse {
+public final class CardResponse implements Serializable {
 
   private final List<ApduResponse> apduResponses;
   private final boolean isLogicalChannelOpen;
