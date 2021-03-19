@@ -13,12 +13,31 @@ package org.eclipse.keyple.core.card;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CardApiPropertiesTest {
 
+  private static String libVersion;
+
+  @BeforeClass
+  public static void beforeClass() throws Exception {
+    InputStream inputStream = new FileInputStream("gradle.properties");
+    try {
+      Properties properties = new Properties();
+      properties.load(inputStream);
+      libVersion = properties.getProperty("version");
+    } finally {
+      inputStream.close();
+    }
+  }
+
   @Test
   public void versionIsCorrectlyWritten() {
-    assertThat(CardApiProperties.VERSION).matches("\\d+(\\.\\d+)+");
+    String apiVersion = CardApiProperties.VERSION;
+    assertThat(apiVersion).isEqualTo(libVersion).matches("\\d+\\.\\d+");
   }
 }
