@@ -24,6 +24,7 @@ public interface CardResourceProfileExtensionSpi {
    * Checks if a card is inserted in the provided reader, selects it, evaluates its profile and
    * potentially executes any necessary commands.
    *
+   * @param reader The reader in which the card is supposed to be inserted.
    * @return A {@link SmartCardSpi} or null if no card is inserted or if its profile does not match
    *     the associated data.
    * @since 2.0
