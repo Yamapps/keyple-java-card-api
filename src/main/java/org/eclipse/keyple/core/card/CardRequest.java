@@ -12,6 +12,7 @@
 package org.eclipse.keyple.core.card;
 
 import java.util.List;
+import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
@@ -38,6 +39,7 @@ public final class CardRequest {
    * @since 2.0
    */
   public CardRequest(List<ApduRequest> apduRequests, boolean isStatusCodesVerificationEnabled) {
+    Assert.getInstance().notEmpty(apduRequests, "apduRequests");
     this.apduRequests = apduRequests;
     this.isStatusCodesVerificationEnabled = isStatusCodesVerificationEnabled;
   }

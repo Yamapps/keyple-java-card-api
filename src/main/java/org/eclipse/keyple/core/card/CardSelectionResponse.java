@@ -34,15 +34,13 @@ public final class CardSelectionResponse implements KeypleCardSelectionResponse 
    * (list of {@link ApduResponse}).
    *
    * @param selectionStatus The selection status.
-   * @param cardResponse The card response.
+   * @param cardResponse null if no card response is available.
    * @throws IllegalArgumentException if one of the argument is null.
    * @since 2.0
    */
   public CardSelectionResponse(SelectionStatus selectionStatus, CardResponse cardResponse) {
 
-    Assert.getInstance()
-        .notNull(selectionStatus, "selectionStatus")
-        .notNull(cardResponse, "cardResponse");
+    Assert.getInstance().notNull(selectionStatus, "selectionStatus");
     this.selectionStatus = selectionStatus;
     this.cardResponse = cardResponse;
   }
