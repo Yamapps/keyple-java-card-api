@@ -28,25 +28,28 @@ public interface ProxyReader {
    * their responses ({@link ApduResponse}) are added to a new list.
    *
    * <p><b>Note:</b> in case of a communication error when sending an APDU, an {@link
-   * AbstractCommunicationException} exception is thrown. Any responses from previous APDU commands
-   * are attached to this exception.<br>
+   * AbstractApduException} exception is thrown. Any responses from previous APDU commands are
+   * attached to this exception.<br>
    * This allows the calling application to be tolerant to card tearing and to retrieve the partial
    * response to the {@link CardRequest}.
    *
    * @param cardRequest The card request.
    * @param channelControl The channel control policy to apply.
    * @return A not null reference.
-   * @throws ReaderCommunicationException if the communication with the reader has failed.
-   * @throws CardCommunicationException if the communication with the card has failed.
+   * @throws ReaderCommunicationException If the communication with the reader has failed.
+   * @throws CardCommunicationException If the communication with the card has failed.
+   * @throws UnexpectedStatusCodeException If any of the APDUs returned an unexpected status code
+   *     and the card request specified the need to check them.
    * @since 2.0
    */
   CardResponse transmitCardRequest(CardRequest cardRequest, ChannelControl channelControl)
-      throws ReaderCommunicationException, CardCommunicationException;
+      throws ReaderCommunicationException, CardCommunicationException,
+          UnexpectedStatusCodeException;
 
   /**
    * Releases the communication channel previously established with the card.
    *
-   * @throws ReaderCommunicationException if the communication with the reader has failed.
+   * @throws ReaderCommunicationException If the communication with the reader has failed.
    * @since 2.0
    */
   void releaseChannel() throws ReaderCommunicationException;

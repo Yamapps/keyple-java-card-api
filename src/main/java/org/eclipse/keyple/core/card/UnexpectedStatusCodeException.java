@@ -10,27 +10,23 @@
  * SPDX-License-Identifier: EPL-2.0
  ************************************************************************************** */
 package org.eclipse.keyple.core.card;
-
 /**
- * Generic exception carrying response data received from the card up to the time of a communication
- * failure.
+ * Exception carrying response data received from the card until an unexpected APDU status code is
+ * received.
  *
  * @since 2.0
  */
-public class AbstractCommunicationException extends Exception {
-
-  private final CardResponse cardResponse;
+public class UnexpectedStatusCodeException extends AbstractApduException {
 
   /**
    * Builds a new exception embedding card response data.
    *
    * @param cardResponse The card responses received so far.
-   * @param message the message to identify the exception context
+   * @param message Message to identify the exception context.
    * @since 2.0
    */
-  public AbstractCommunicationException(CardResponse cardResponse, String message) {
-    super(message);
-    this.cardResponse = cardResponse;
+  public UnexpectedStatusCodeException(CardResponse cardResponse, String message) {
+    super(cardResponse, message);
   }
 
   /**
@@ -41,19 +37,7 @@ public class AbstractCommunicationException extends Exception {
    * @param cause The cause
    * @since 2.0
    */
-  public AbstractCommunicationException(
-      CardResponse cardResponse, String message, Throwable cause) {
-    super(message, cause);
-    this.cardResponse = cardResponse;
-  }
-
-  /**
-   * Gets the response data received so far.
-   *
-   * @return A not null reference.
-   * @since 2.0
-   */
-  public CardResponse getCardResponse() {
-    return cardResponse;
+  public UnexpectedStatusCodeException(CardResponse cardResponse, String message, Throwable cause) {
+    super(cardResponse, message, cause);
   }
 }

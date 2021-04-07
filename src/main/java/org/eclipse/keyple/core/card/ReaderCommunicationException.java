@@ -12,12 +12,12 @@
 package org.eclipse.keyple.core.card;
 
 /**
- * Exception carrying response data received from the card up to the time of a reader communication
- * failure.
+ * Exception carrying response data received from the card until a communication failure with the
+ * reader occurs.
  *
  * @since 2.0
  */
-public class ReaderCommunicationException extends AbstractCommunicationException {
+public class ReaderCommunicationException extends AbstractApduException {
 
   /**
    * Builds a new exception embedding card response data.

@@ -60,7 +60,7 @@ public final class CardRequest {
    * @return true if the status code verification is enabled, false if not.
    * @since 2.0
    */
-  boolean isStatusCodesVerificationEnabled() {
+  public boolean isStatusCodesVerificationEnabled() {
     return isStatusCodesVerificationEnabled;
   }
 

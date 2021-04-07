@@ -11,6 +11,7 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.card;
 
+import java.util.HashSet;
 import java.util.Set;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.json.JsonUtil;
@@ -31,9 +32,11 @@ import org.eclipse.keyple.core.util.json.JsonUtil;
  */
 public final class ApduRequest {
 
+  private static final int DEFAULT_SUCCESSFUL_CODE = 0x9000;
+
   private final byte[] bytes;
   private final boolean isCase4;
-  private Set<Integer> successfulStatusCodes;
+  private final Set<Integer> successfulStatusCodes;
   private String name;
 
   /**
@@ -112,6 +115,8 @@ public final class ApduRequest {
       }
       isCase4 = false;
     }
+    this.successfulStatusCodes = new HashSet<Integer>();
+    this.successfulStatusCodes.add(DEFAULT_SUCCESSFUL_CODE);
   }
 
   /**
@@ -126,6 +131,8 @@ public final class ApduRequest {
     Assert.getInstance().notNull(bytes, "bytes").greaterOrEqual(bytes.length, 5, "bytes.length");
     this.bytes = bytes;
     this.isCase4 = isCase4;
+    this.successfulStatusCodes = new HashSet<Integer>();
+    this.successfulStatusCodes.add(DEFAULT_SUCCESSFUL_CODE);
   }
 
   /**
@@ -153,14 +160,18 @@ public final class ApduRequest {
   }
 
   /**
-   * Sets a list of status codes that must be considered successful for the APDU.
+   * Adds a status code to the list of those that should be considered successful for the APDU.
    *
-   * @param successfulStatusCodes A not empty Set of Integer.
+   * <p>Note: initially, the list contains the standard successful status code {@code 9000h}.
+   *
+   * @param successfulStatusCode A positive int &le; {@code FFFFh}.
    * @return the object instance.
+   * @throws IllegalArgumentException If successfulStatusCode is out of range.
    * @since 2.0
    */
-  public ApduRequest setSuccessfulStatusCodes(Set<Integer> successfulStatusCodes) {
-    this.successfulStatusCodes = successfulStatusCodes;
+  public ApduRequest addSuccessfulStatusCode(int successfulStatusCode) {
+    Assert.getInstance().isInRange(successfulStatusCode, 0, 0xFFFF, "successfulStatusCode");
+    this.successfulStatusCodes.add(successfulStatusCode);
     return this;
   }
 
