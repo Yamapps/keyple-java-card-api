@@ -39,7 +39,11 @@ public final class CardRequest {
    * @since 2.0
    */
   public CardRequest(List<ApduRequest> apduRequests, boolean isStatusCodesVerificationEnabled) {
-    Assert.getInstance().notEmpty(apduRequests, "apduRequests");
+    /*
+     * We should not check apduRequests because when initiating secured PoTransaction with SAM, the card selector doesn't contain any APDU request
+     *  -> It only checks that a SAM is available, its channel opened, and that the ATR matches atrRegex
+     */
+//    Assert.getInstance().notEmpty(apduRequests, "apduRequests");
     this.apduRequests = apduRequests;
     this.isStatusCodesVerificationEnabled = isStatusCodesVerificationEnabled;
   }
