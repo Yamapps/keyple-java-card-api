@@ -35,7 +35,7 @@ public final class CardSelectionResponse implements KeypleCardSelectionResponse 
    *
    * @param selectionStatus The selection status.
    * @param cardResponse null if no card response is available.
-   * @throws IllegalArgumentException if one of the argument is null.
+   * @throws IllegalArgumentException If selectionStatus is null.
    * @since 2.0
    */
   public CardSelectionResponse(SelectionStatus selectionStatus, CardResponse cardResponse) {
@@ -58,7 +58,7 @@ public final class CardSelectionResponse implements KeypleCardSelectionResponse 
   /**
    * Gets the card response.
    *
-   * @return A not null reference.
+   * @return null if no responses have been set.
    * @since 2.0
    */
   public CardResponse getCardResponse() {
